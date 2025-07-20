@@ -3,44 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <title>Bài thực hành chương 2</title>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <!-- Xây dựng Form thêm sinh viên -->
         <h1>THÊM SINH VIÊN</h1>
-        <form>
+        <form class="tsv">
             <div>
-                <label>Mã sinh viên</label>
-                <br>
+                <label style="margin-top: 4px;">Mã sinh viên</label>
                 <input type="text" required>
             </div>
             <div>
                 <label>Họ và tên</label>
-                <br>
                 <input type="text" required>
             </div>
             <div>
                 <label>Email</label>
-                <br>
                 <input type="email" required>
             </div>
             <div>
                 <label>Ngày sinh</label>
-                <br>
                 <input type="date">
             </div>
             <div>
                 <label>Giới tính</label>
-                <br>
-                <input type="radio" name="gioitinh">Nam
-                <input type="radio" name="gioitinh">Nữ
+                <div class="radio">
+                    <input type="radio" name="gioitinh" class="gt">Nam
+                    <input type="radio" name="gioitinh" class="gt">Nữ
+                </div>
             </div>
             <div>
                 <label>Ghi chú</label>
-                <br>
                 <input type="textarea">
             </div>
 
-            <button>Thêm sinh viên</button>
+            <button>Thêm</button>
         </form>
         
         <!-- Tạo bảng hiển thị danh sách sinh viên -->
@@ -54,6 +51,7 @@
                     <th>Email</th>
                     <th>Giới tính</th>
                     <th>Ngày sinh</th>
+                    <th>Tùy chọn</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,6 +62,10 @@
                     <td>tranhuy73@gmail.com</td>
                     <td>Nam</td>
                     <td>07/03/2004</td>
+                    <td>
+                        <a href="">Sửa</a>
+                        <a href="">Xóa</a>
+                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -72,6 +74,10 @@
                     <td>minhanh2901@gmail.com</td>
                     <td>Nữ</td>
                     <td>29/01/2006</td>
+                    <td>
+                        <a href="">Sửa</a>
+                        <a href="">Xóa</a>
+                    </td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -80,13 +86,12 @@
                     <td>datnguyen1abc@gmail.com</td>
                     <td>Nam</td>
                     <td>30/04/2004</td>
+                    <td>
+                        <a href="">Sửa</a>
+                        <a href="">Xóa</a>
+                    </td>
                 </tr>
             </tbody>
-        </table>
-        <h4>
-            Tùy chọn
-            <a href="">Sửa</a>
-            <a href="">Xóa</a>
-        </h4>
+        </table>  
     </body>
 </html>
