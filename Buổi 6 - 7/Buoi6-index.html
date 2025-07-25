@@ -15,37 +15,38 @@
             <a class="navbar-brand p-2 fs-4" href="#">Quản lý sinh viên</a> <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="navbar-collapse collapse" id="navbarsExample01" style=""> <ul class="navbar-nav me-auto mb-2"> <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">Home</a> </li> <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> <li class="nav-item"> <a class="nav-link disabled" aria-disabled="true">Disabled</a> </li> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> <ul class="dropdown-menu"> <li><a class="dropdown-item" href="#">Action</a></li> <li><a class="dropdown-item" href="#">Another action</a></li> <li><a class="dropdown-item" href="#">Something else here</a></li> </ul> </li> </ul> </div>
     </nav>
 
+    <p id="thongBao" class="alert alert-success d-none text-success fw-bold mt-2"></p>
     <div class="container-fluid px-5">
         <div class="row">
             <!-- Form bên trái-->
              <div class="col-md-5">
                 <div class="p-2 border rounded bg-white">
-                <form class="ps-4 pe-4">
+                <form class="ps-4 pe-4" id="formSV">
                     <h4 class="mt-3 mb-3 text-danger">Thêm Sinh Viên</h4>
                     <div class="mb-3">
                         <label class="form-label">Mã sinh viên</label>
-                        <input type="text" class="form-control border border-secondary-subtle rounded" required>
+                        <input type="text" id="maSV" class="form-control border border-secondary-subtle rounded" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Họ và tên</label>
-                        <input type="text" class="form-control border border-secondary-subtle rounded" required>
+                        <input type="text" id="hoTen" class="form-control border border-secondary-subtle rounded" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control border border-secondary-subtle rounded" required>
+                        <input type="email" id="email" class="form-control border border-secondary-subtle rounded" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Ngày sinh</label>
-                        <input type="date" class="form-control border border-secondary-subtle rounded">
+                        <input type="date" id="ngaySinh" class="form-control border border-secondary-subtle rounded">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Giới tính</label><br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gioitinh" id="nam">
+                            <input class="form-check-input" type="radio" name="gioitinh" value="Nam" id="nam">
                             <label class="form-check-label" for="nam">Nam</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gioitinh" id="nu">
+                            <input class="form-check-input" type="radio" name="gioitinh" value="Nữ" id="nu">
                             <label class="form-check-label" for="nu">Nữ</label>
                         </div>
                     </div>
@@ -54,7 +55,7 @@
                         <textarea class="form-control border border-secondary-subtle rounded" rows="3"></textarea>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-outline-primary ps-4 pe-4 mt-2 mb-3" onclick="alert('Hello World!')">Thêm</button>
+                        <button type="submit" id="btnThem" class="btn btn-outline-primary ps-4 pe-4 mt-2 mb-3">Thêm</button>
                     </div>
                 </form>
                 </div>
@@ -63,7 +64,7 @@
              <div class="col-md-7">
                 <div class="p-3 border rounded bg-white">
                 <h4 class="text-success">Danh Sách Sinh Viên</h4>
-                <table class="table table-hover mt-3">
+                <table class="table table-hover mt-3" id="bangSinhVien">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -120,6 +121,54 @@
         </div>
     </div>
     </div>
+    <!-- Sự kiện gắn nút thêm -->
+    <script>
+        document.getElementById("btnThem").addEventListener("click", function () {
+        alert("Đã nhấn nút Thêm");
+        });
+    </script>
+    <!-- Thêm dòng mới vào bảng HTML -->
+    <script>
+        document.getElementById("formSV").addEventListener("submit", function (e) {
+        e.preventDefault()
+
+        let maSV = document.getElementById("maSV").value;
+        let hoTen = document.getElementById("hoTen").value;
+        let email = document.getElementById("email").value;
+        let gioiTinh = document.querySelector('input[name="gioitinh"]:checked').value;
+        let ngaySinhRaw = document.querySelector('input[type="date"]').value;
+        let [yyyy, mm, dd] = ngaySinhRaw.split("-");
+        let ngaySinh = `${dd}/${mm}/${yyyy}`;
+
+        let table = document.getElementById("bangSinhVien").getElementsByTagName("tbody")[0];
+        let newRow = table.insertRow();
+
+        let stt = table.rows.length;
+        let sttCell = document.createElement("th");
+        sttCell.innerText = stt;
+        newRow.appendChild(sttCell);
+
+        newRow.insertCell(1).innerText = maSV;
+        newRow.insertCell(2).innerText = hoTen;
+        newRow.insertCell(3).innerText = email;
+        newRow.insertCell(4).innerText = gioiTinh;
+        newRow.insertCell(5).innerText = ngaySinh;
+
+        newRow.insertCell(6).innerHTML = 
+        `<a href="" class="text-warning">Sửa</a>
+        <a href="" class="text-danger">Xóa</a>`;
+        
+        document.getElementById("thongBao").innerText = "Thêm sinh viên thành công!";
+        document.getElementById("thongBao").classList.remove("d-none");
+
+        setTimeout(() => {
+            document.getElementById("thongBao").innerText = "";
+            document.getElementById("thongBao").classList.add("d-none");
+        }, 3000);
+
+        form.reset();
+        });
+    </script>
 </body>
 
 </html>
