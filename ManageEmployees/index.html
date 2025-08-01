@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand bg-light p-2 border rounded" aria-label="Second navbar example"> 
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TLU</a> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> 
+                <span class="navbar-toggler-icon"></span> 
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav">
+                    <li class="nav-item"> 
+                        <a class="nav-link" aria-current="page" href="#">Home</a> 
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Employees</a> 
+                    </li> 
+                </ul> 
+                <form role="search" class="d-flex ms-auto me-3"> 
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" size="25"> 
+                    <button class="btn btn-outline-success w-50 ms-2" type="submit">SEARCH</button>
+                </form>
+            </div> 
+        </div> 
+    </nav>
+
+    <div class="mt-4 p-3" style="background-color: rgb(57, 57, 113);">
+        <div class="container-fluid row">
+            <div class="col text-white">
+                <h3>Manage <b>Employees</b></h2>
+            </div>
+            <div class="col text-end">
+                <button class="btn btn-danger"><i class="bi bi-dash-circle-fill"></i> Delete</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#themModal"><i class="bi bi-plus-circle-fill"></i> Add New Employees</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table container">
+        <thead>
+            <tr class="border-secondary-subtle">
+                <th class="py-3 align-middle"><input type="checkbox"></th>
+                <th class="align-middle">Name</th>
+                <th class="align-middle">Email</th>
+                <th class="align-middle">Address</th>
+                <th class="align-middle">Phone</th>
+                <th colspan="2" class="align-middle">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="py-3 align-middle"><input type="checkbox"></td>
+                <td class="align-middle">Thomas Hardy</td>
+                <td class="align-middle">thomashardy@mail.com</td>
+                <td class="align-middle">89 Chiaroscuro Rd, Portland, USA</td>
+                <td class="align-middle">(171) 555-2222</td>
+                <td class="text-warning align-middle"><i class="bi bi-pencil-fill"></i></td>
+                <td class="text-danger align-middle"><i class="bi bi-trash-fill"></i></td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle"><input type="checkbox"></td>
+                <td class="align-middle">Dominique Perrier</td>
+                <td class="align-middle">dominiqueperrier@mail.com</td>
+                <td class="align-middle">Obere Str. 57, Berlin, Germany</td>
+                <td class="align-middle">(313) 555-5735</td>
+                <td class="text-warning align-middle"><i class="bi bi-pencil-fill"></i></td>
+                <td class="text-danger align-middle"><i class="bi bi-trash-fill"></i></td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle"><input type="checkbox"></td>
+                <td class="align-middle">Maria Anders</td>
+                <td class="align-middle">mariaanders@mail.com</td>
+                <td class="align-middle">25, rue Lauriston, Paris, France</td>
+                <td class="align-middle">(503) 555-9931</td>
+                <td class="text-warning align-middle"><i class="bi bi-pencil-fill"></i></td>
+                <td class="text-danger align-middle"><i class="bi bi-trash-fill"></i></td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle"><input type="checkbox"></td>
+                <td class="align-middle">Fran Wilson</td>
+                <td class="align-middle">franwilson@mail.com</td>
+                <td class="align-middle">C/ Araquil, 67, Madrid, Spain</td>
+                <td class="align-middle">(204) 619-5731</td>
+                <td class="text-warning align-middle"><i class="bi bi-pencil-fill"></i></td>
+                <td class="text-danger align-middle"><i class="bi bi-trash-fill"></i></td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle"><input type="checkbox"></td>
+                <td class="align-middle">Martin Blank</td>
+                <td class="align-middle">martinblank@mail.com</td>
+                <td class="align-middle">Via Monte Bianco 34, Turin, Italy</td>
+                <td class="align-middle">(480) 631-2097</td>
+                <td class="text-warning align-middle"><i class="bi bi-pencil-fill"></i></td>
+                <td class="text-danger align-middle"><i class="bi bi-trash-fill"></i></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between align-items-center container mt-5">
+        <p class="p-2">Showing <b>5</b> out of <b>25</b> entries</p>
+        <div class="d-flex align-items-center">
+                <ul class="pagination">
+                <li class="page-item"><a href="#" class="page-link text-dark">Previous</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">4</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">5</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="themModal" tabindex="-1" aria-labelledby="themModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-0">
+                <div class="modal-header px-4 pt-4">
+                    <h5 class="modal-title" id="themModalLabel">Add Employees</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4">
+                    <form>
+                    <div class="mb-3">
+                        <label for="khachHang" class="form-label">Name</label>
+                        <input type="text" id="khachHang" class="form-control" id="khachHang">
+                        <span id="loiKhachhang" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nhanVien" class="form-label">Email</label>
+                        <input type="text" id="nhanVien" class="form-control" id="nhanVien">
+                        <span id="loiNhanvien" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="soTien" class="form-label">Address</label>
+                        <input type="text" id="soTien" class="form-control" id="soTien">
+                        <span id="loiSotien" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="soTien" class="form-label">Phone</label>
+                        <input type="text" id="soTien" class="form-control" id="soTien">
+                        <span id="loiSotien" class="text-danger small"></span>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-secondary-subtle px-4 py-3">
+                    <button type="button" class="btn btn-outline-0 border-0 bg-transparent shadow-none" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="btnThem" class="btn btn-success px-4" onclick="themGiaoDich()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
